@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Table Analyzer</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">AI + TABLES + REST API</p>
+      <h1>AI Table Analyzer</h1>
+      <p class="subtitle">Upload CSV/XLSX, preview the data, then ask a question about the table.</p>
+    </header>
+
+    <section class="card">
+      <h2>1. Load a table</h2>
+      <div class="upload-row">
+        <input id="fileInput" type="file" accept=".csv,.xlsx,.xls" />
+        <button id="parseButton">Parse table</button>
+        <a href="/sample-data/sales.csv" download>Download sample CSV</a>
+      </div>
+      <p id="fileStatus" class="status">No file loaded.</p>
+    </section>
+
+    <section id="previewSection" class="card hidden">
+      <div class="section-heading">
+        <h2>2. Preview</h2>
+        <span id="rowCount" class="badge"></span>
+      </div>
+      <div class="table-wrap">
+        <table id="previewTable"></table>
+      </div>
+      <p class="hint">Preview shows the first 20 rows. Up to 200 rows are sent to the analysis endpoint.</p>
+    </section>
+
+    <section id="analysisSection" class="card hidden">
+      <h2>3. Ask AI</h2>
+      <label for="question">Question</label>
+      <textarea id="question" rows="3">Which products are the most profitable and why?</textarea>
+      <div class="action-row">
+        <button id="analyzeButton">Analyze table</button>
+        <span id="analysisMode" class="badge muted"></span>
+      </div>
+      <pre id="answer" class="answer">The answer will appear here.</pre>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
